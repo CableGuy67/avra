@@ -79,7 +79,7 @@
   counters and the assembler builds wrong code.
 - Create a list of program segments (see orglist). Every .ORG, .DEVICE, .?SEG is stored, so the 
   assembler now can check for overlapping segments. Now overlapped segments in Flash, Data or EEPROM memory 
-  are detected. Very usefull, if .ORG is used to build tables or bootloader code at specific addresses.
+  are detected. Very useful, if .ORG is used to build tables or bootloader code at specific addresses.
 - Better check for exceeding device space in RAM, Flash or EEPROM memory. Now not the total count of
   assembled memory is used, instead every assembled address range is checked.
 - .DSEG and .ESEG now generates an error, if device has no RAM / EEPROM.

@@ -346,7 +346,7 @@ int
 parse_mnemonic(struct prog_info *pi)
 {
 	int mnemonic;
-	int i;
+	int64_t i;
 	int opcode = 0;
 	int opcode2 = 0;
 	int instruction_long = False;
@@ -355,7 +355,7 @@ parse_mnemonic(struct prog_info *pi)
 	struct macro *macro;
 	char temp[MAX_MNEMONIC_LEN + 1];
 
-	operand1 = get_next_token(pi->fi->scratch, TERM_SPACE);  /* we get the first word on line */
+	operand1 = get_next_token(pi->fi->scratch, TERM_WORD);  /* we get the first word on line */
 	mnemonic = get_mnemonic_type(pi);
 	if (mnemonic == -1) {				/* if -1 this must be a macro name */
 		macro = get_macro(pi, pi->fi->scratch); /* and so, we try to get the corresponding macro struct. */
@@ -714,7 +714,7 @@ get_register(struct prog_info *pi, char *data)
 	if (data[1] != '\0') {
 		print_msg(pi, MSGTYPE_ERROR, "Garbage in operand (%s)", data);
 	}
-	switch (data[0]) {
+	switch (tolower(data[0])) {
 	case 'x':
 		reg = 26;
 		break;
@@ -734,7 +734,7 @@ get_register(struct prog_info *pi, char *data)
 }
 
 int
-get_bitnum(struct prog_info *pi, char *data, int *ret)
+get_bitnum(struct prog_info *pi, char *data, int64_t *ret)
 {
 	if (!get_expr(pi, data, ret))
 		return (False);
