@@ -5,6 +5,12 @@
 AVRA is an assembler for Atmel AVR microcontrollers, and it is almost
 compatible with Atmel's own assembler, AVRASM32. AVRA is written in C99.
 
+#### Notes about this fork
+This was forked to bring in some of the changes to allow AmForth to be able
+to use avra as the assembler instead of avrasm2.exe. Currently only what is
+needed to compile avra is in my AmForth fork. The intent is to use my fork as
+a way to add it into my AmForth as a submodule.
+
 ## Differences between AVRA and AVRASM32
 
 There are some differences between the original Atmel assembler AVRASM32 and
